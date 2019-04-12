@@ -8,3 +8,5 @@ The code was tested on Matlab R2017b.
 
 BPWD_entry.m is the entry function
 Use 7-zip unzips myuv1_2020_1800lines.7z first, then run the entry function.
+
+Change "if 0" to "if 1" to support different CT image sizes.

@@ -6,6 +6,17 @@ close all;
 addpath(genpath(pwd))
 
 load('img_list_bottom800_2023.mat'); % acquired X-ray CT data
+% use simulated data
+if 0 % n: number of bins (or image size); lines: number of projections
+        Img = phantom(n); %0.6
+        step_size  = 180/lines; %0.1 0.2 0.5 1 2 5  5.625 26.5;
+        THETA = 0:step_size:180-step_size;
+        PR_list1 = projections(Img, THETA);
+        ext_N = size(PR_list1, 1);
+        PR_list = PR_list1(ceil((ext_N-n+1)/2):ceil((ext_N-n+1)/2)+n-1, :);
+        PR_list = PR_list + 0.0*randn(n, lines)*max(abs(PR_list(:)));
+end
+
 if 0
         lines = 1800; % number of projections
         n = 2020; % number of bins (or image size)
